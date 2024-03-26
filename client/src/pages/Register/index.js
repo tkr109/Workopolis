@@ -1,5 +1,5 @@
 import { Button, Form, Input, message } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Divider from "../../components/Divider";
 import { RegisterUser } from "../../apicalls/users";
@@ -23,6 +23,13 @@ function Register() {
       message.error(error.message)
     }
   };
+
+  useEffect(()=>{
+    if(localStorage.getItem("token"))
+    {
+      window.location.href='/'
+    }
+  },[])
 
   return (
     <div className="grid grid-cols-2">

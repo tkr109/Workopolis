@@ -1,10 +1,10 @@
 import { Button, Form, Input, message } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Divider from "../../components/Divider";
 import { LoginUser } from "../../apicalls/users";
 
-function Login() {
+function Login() {  
 
   const onFinish=async(values)=>{
     try{
@@ -24,6 +24,13 @@ function Login() {
       message.error(error.message)
     }
   }
+
+  useEffect(()=>{
+    if(localStorage.getItem("token"))
+    {
+      window.location.href='/'
+    }
+  },[])
 
   return (
     <div className="grid grid-cols-2">
